@@ -61,6 +61,10 @@ if __name__ == '__main__':
     pretreatmnet.PreTreatmnet(gv.filename, True, gv.savename)
     func1()
     write_excel(gv.algrithm)
+
+
+
+    
     # print(os.path.exists(gv.excel_filename))
 
 
