@@ -3,7 +3,7 @@
 @file: entrance.py
 @author: tianfeihan
 @time: 2019-02-28  15:12:46
-@description: 
+@description: 本项目程序入口
 """
 import os
 import numpy
@@ -39,12 +39,9 @@ def write_excel(data):
             excel_data = xlrd.open_workbook(gv.excel_filename)
             table = excel_data.sheet_by_name(gv.alg_name[inj])
             rows = table.nrows
-            print(rows)
-            print(inj)
             newWB = copy(excel_data)
             sheet = newWB.get_sheet(inj)
             for j in range(gv.evaluation_num):
-                print(data_tem[inj][j])
                 sheet.write(rows, j, data_tem[inj][j])
             newWB.save(gv.excel_filename)
     else:
@@ -64,7 +61,7 @@ if __name__ == '__main__':
 
 
 
-    
+
     # print(os.path.exists(gv.excel_filename))
 
 

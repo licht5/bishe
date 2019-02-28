@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+@author: tianfeihan
+@time: 2019-02-13  13:08:30
+@description: 数据集缺失时，用每种属相的平均值作为填补
+"""
+
 from sklearn.preprocessing import Imputer
 import numpy as np
 # from ganzangjibing import shujuchuli
