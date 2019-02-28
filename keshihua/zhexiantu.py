@@ -32,6 +32,6 @@ myfont = FontProperties(fname='/System/Library/Fonts/STHeiti Light.ttc')
 plt.rcParams["font.sans-serif"] = ["Microsoft YaHei"]
 matplotlib.rcParams['axes.unicode_minus']=False
 plt.title(u'数据集'+gv.project_name+'随不平衡率变化时各指标变化图',fontproperties=myfont)
-plt.xlabel(u'算法',fontproperties=myfont)
-plt.ylabel(u'auc')
+plt.xlabel(u'不平衡率',fontproperties=myfont)
+# plt.ylabel(u'auc')
 plt.show()
