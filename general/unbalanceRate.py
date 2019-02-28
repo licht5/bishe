@@ -8,21 +8,30 @@
 from sklearn.preprocessing import Imputer
 import numpy as np
 import csv
+import random
 from sklearn.model_selection import train_test_split
 
 def SetDataUnbalanced(filename,test_rate,rate_x,rate_y,att_type,att_add):
 
     if att_type=="num":
         data = np.genfromtxt(filename, skip_header=False, delimiter=',')
-        Attributes, targets = data[:, :-1], data[:, -1]
+        if att_add=="a":
+            Attributes, targets = data[:, :-1], data[:, -1]
+        else:
+            Attributes, targets = data[:, 1:], data[:, 0]
+
     elif att_type=="str":
         with open(filename) as f:
             reader = csv.reader(f)
             data=list(reader)
         Attributes,targets=[],[]
         for i in data:
-            Attributes.append(i[1:])
-            targets.append(i[0])
+            if att_add=="a":
+                Attributes.append(i[1:])
+                targets.append(i[0])
+            else:
+                Attributes.append(i[:-1])
+                targets.append(i[-1])
     else:
         print("error：没有输入合适的属性type！")
         return
@@ -34,23 +43,49 @@ def SetDataUnbalanced(filename,test_rate,rate_x,rate_y,att_type,att_add):
 
     positive_num=int(train_num*rate_x/(rate_x+rate_y))
     negtive_num=train_num-positive_num
+
     flag_positive=0
     flag_negtive = 0
     train_data=[]
     test_data=[]
-    for data_ in data:
+    # random_num=random.randint(0,data_len-1)
+    for i in range(data_len):
+        random_num = random.randint(0, len(data)-1)
+        data_tem=data[random_num]
+        # del data[random_num]
+        np.delete(data,random_num, axis=0)
         if att_add=="a":
-            att=data_[-1]
+            att=data_tem[-1]
         else:
-            att=data_[0]
-        if att==positive and flag_positive<positive_num:
-            train_data.append(data_)
-            flag_positive=flag_positive+1
+            att=data_tem[0]
+        if att == positive and flag_positive < positive_num:
+            train_data.append(data_tem)
+            flag_positive = flag_positive + 1
         elif att!=positive and flag_negtive<negtive_num:
-            train_data.append(data_)
+            train_data.append(data_tem)
             flag_negtive=flag_negtive+1
         else:
-            test_data.append(data_)
+            # break
+            test_data.append(data_tem)
+
+
+
+
+
+    #
+    # for data_ in data:
+    #     if att_add=="a":
+    #         att=data_[-1]
+    #     else:
+    #         att=data_[0]
+    #     if att==positive and flag_positive<positive_num:
+    #         train_data.append(data_)
+    #         flag_positive=flag_positive+1
+    #     elif att!=positive and flag_negtive<negtive_num:
+    #         train_data.append(data_)
+    #         flag_negtive=flag_negtive+1
+    #     else:
+    #         test_data.append(data_)
     if att_type=="num":
         np.savetxt("../dataFile/train.csv", train_data, delimiter=',')
         np.savetxt("../dataFile/test.csv", test_data, delimiter=',')
@@ -75,6 +110,6 @@ if __name__ == '__main__':
     rate_x, rate_y=1,1
     test_rate=0.3
     # filename="data_after.csv"
-    filename="../dataFile/data_after.csv"
+    filename="../dataFile/mushroom.csv"
 
-    SetDataUnbalanced(filename,test_rate,rate_x,rate_y,"num")
+    SetDataUnbalanced(filename,test_rate,rate_x,rate_y,"num","a")
