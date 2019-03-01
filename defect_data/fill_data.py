@@ -8,7 +8,9 @@
 from sklearn.preprocessing import Imputer
 import numpy as np
 # from ganzangjibing import shujuchuli
-filename="../dataFile/raw_data.csv"
+# filename="../dataFile/raw_data.csv"
+filename="../cahocanshu/hepatitis.csv"
+
 data=np.genfromtxt(filename,skip_header=False,delimiter=',')
 # data=data[:,]
 print(data)
@@ -17,4 +19,4 @@ imp=Imputer(missing_values=np.nan,strategy='mean',axis=0)
 imp.fit(data)
 outerfile=imp.transform(data)
 print(outerfile)
-np.savetxt("../dataFile/breast_mass.csv",outerfile,delimiter=',')
+np.savetxt("../cahocanshu/hepatitis_after.csv",outerfile,delimiter=',')
