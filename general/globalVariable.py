@@ -7,7 +7,7 @@
 """
 rate_x, rate_y = 1,1
 test_rate = 0.4
-project_name="breast_mass"
+project_name="mushroom"
 att_type="num"
 att_add="a"
 filename="../dataFile/"+project_name+".csv"
