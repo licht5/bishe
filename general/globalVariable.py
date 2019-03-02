@@ -6,15 +6,21 @@
 @description:  全局变量定义，每次替换数据源时，只需要注意project_name，att_add即类别在最前b，还是最后a
 """
 rate_x, rate_y = 1,1
+stop_Flag=False
+
+
 test_rate = 0.4
+project=["mushroom","breast_mass","Ionosphere","hepatitis_after","liver-disorders","tictac"]
 project_name="mushroom"
 att_type="num"
-att_add="a"
-filename="../dataFile/"+project_name+".csv"
+att=["b","a","a","b","a","a"]
+att_add="b"
+filename="../dataFile/raw/"+project_name+".csv"
 savename="../dataFile/ceshi.csv"
 train_filename = "../dataFile/train.csv"
 test_filename = "../dataFile/test.csv"
-excel_filename="../dataFile/"+project_name+".xls"
+
+excel_filename="../dataFile/excel/"+project_name+".xls"
 alg_name=["LR","KNN","svm","guassNB","DecisionTree","MLP","adaBoost","GBDT","rdForest"]
 alg_num=len(alg_name)
 evaluation=["acc","pre","rec","f1","auc"]

@@ -64,19 +64,23 @@ def huitu(i,k_range,k_auc):
     plt.plot(k_range, k_auc)
     plt.xlabel("Value of K for KNN")
     plt.ylabel("Cross-validates roc_auc")
-    plt.title(bl.projicet[i])
+    plt.title(bl.projicet_name)
     for a, b in zip(k_range, k_auc):
         plt.text(a, b + 0.001, '%.4f' % b, ha='center', va='bottom', fontsize=9)
-    plt.savefig('../picture/adaboost/'+bl.projicet[i]+'_estimator.png')
+    plt.savefig('../picture/saunfa/'+i+"_"+bl.projicet_name+'_estimator.png')
     plt.show()
 
 
 
 if __name__ == '__main__':
-    for i in range(len(bl.projicet)):
-        bl.filename="../canshuData/"+bl.projicet[i]+".csv"
-        k_range, k_auc=ceping(bl.filename,bl.att[i])
-        huitu(i,k_range, k_auc)
+    # for i in range(len(bl.projicet)):
+    #     bl.filename="../canshuData/"+bl.projicet[i]+".csv"
+    #     k_range, k_auc=ceping(bl.filename,bl.att[i])
+    #     huitu(i,k_range, k_auc)
+    saunfa="adaboost"
+    bl.filename = "../canshuData/" + bl.projicet_name + ".csv"
+    k_range, k_auc=ceping(bl.filename,"b")
+    huitu(saunfa,k_range, k_auc)
 
 
 

@@ -10,3 +10,4 @@ projicet=["mushroom","breast_mass","Ionosphere","hepatitis_after","liver-disorde
 att=["b","a","a","b","a","a"]
 filename=""
 alg_name=["LR","KNN","svm","guassNB","DecisionTree","MLP","adaBoost","GBDT","rdForest"]
+projicet_name="Ionosphere"

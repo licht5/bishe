@@ -13,6 +13,8 @@ from xlutils.copy import copy
 import mushroom.algorithm
 import general.globalVariable as gv
 from general import pretreatmnet, unbalanceRate
+from keshihua.xiangxing_auc import DrwBox
+from keshihua.zhexiantu import DrwZhexian
 
 
 def func1():
@@ -23,11 +25,16 @@ def func1():
     else:
         pass
     for i in range(10):
+
         unbalanceRate.SetDataUnbalanced(gv.savename, gv.test_rate, gv.rate_x, gv.rate_y, gv.att_type, gv.att_add)
         mushroom.algorithm.totalAlgrithon()
+        if (i == 9):
+            gv.flag = False
+
 
 
 def write_excel(data):
+    print("========== run to write_excel====== ")
     data_tem = []
     for i in range(gv.alg_num):
         tem = numpy.array(data[i])
@@ -55,9 +62,28 @@ def write_excel(data):
         workbook.save(gv.excel_filename)
 
 if __name__ == '__main__':
+    # for i in  range(len(gv.project)):
+    #     gv.project_name=gv.project[i]
+    #     gv.att_add=gv.att[i]
+
+    #     DrwBox()
+    #     DrwZhexian()
     pretreatmnet.PreTreatmnet(gv.filename, True, gv.savename)
     func1()
     write_excel(gv.algrithm)
+
+
+
+
+
+
+    # for i in range(1,15):
+    #     gv.rate_x=i
+    #     pretreatmnet.PreTreatmnet(gv.filename, True, gv.savename)
+    #     func1()
+    #     write_excel(gv.algrithm)
+
+
 
 
 

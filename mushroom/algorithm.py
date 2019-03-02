@@ -37,6 +37,8 @@ def getData():
         print("种类1的测试样本:" + str(shuju_2))
         print("种类2的测试样本:" + str(len(ts_target) - shuju_2))
         gv.flag=True
+
+
     return train_data,ts_data,train_target,ts_target
 
 
@@ -61,14 +63,15 @@ def showResult(result,i,ts_target):
     tem.append(rec)
     tem.append(f1)
     tem.append(auc)
-
     gv.algrithm[i].append(tem)
+
 # ******************************* 逻辑斯特回归 *******************************
 def LogistRe(train_data,ts_data, train_target,ts_target):
     clf = LogisticRegression(random_state=0)
     clf = clf.fit(train_data, train_target)
     result = clf.predict(ts_data)
     showResult(result, 0, ts_target)
+
 
 def KNNClass(train_data,ts_data, train_target,ts_target):
     clf = KNeighborsClassifier(n_neighbors=2)
