@@ -42,6 +42,7 @@ def DrwZhexian():
 
     # plt.legend()
     plt.savefig('../Step1_picture/zhexian/'+gv.project_name+'.png')
+    # fig.title(u'' + 'MM数据集随不平衡率增大各评价指标变化折线图' + '', fontproperties=myfont)
     plt.show()
 if __name__ == '__main__':
     DrwZhexian()

@@ -30,11 +30,11 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 
-filename="../dataFile/train.csv"
+filename="../canshuData/mushroom.csv"
 data=np.loadtxt(filename,delimiter=",")
 
-X=data[:,1:]
-y=data[:,0]
+X=data[:,0:-1]
+y=data[:,-1]
 
 
 def ada(k):
@@ -61,7 +61,7 @@ def huitu(train_sizes, train_loss, test_loss ,i):
 if __name__ == '__main__':
     train_sizes, train_loss, test_loss=ada(3)
     huitu(train_sizes, train_loss, test_loss ,1)
-    train_sizes, train_loss, test_loss = ada(15)
+    train_sizes, train_loss, test_loss = ada(6)
     huitu(train_sizes, train_loss, test_loss, 2)
     plt.show()
     # train_sizes, train_loss, test_loss=knn(3)

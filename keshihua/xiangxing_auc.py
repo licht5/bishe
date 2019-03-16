@@ -35,14 +35,18 @@ def DrwBox():
     fig.add_subplot(2, 1, 1)
     dp = pd.DataFrame(to_data)
     dp.boxplot()
-    plt.title(u'不同算法在数据集' + gv.project_name + '上F1表现箱形图', fontproperties=myfont)
+    # plt.title(u'不同算法在数据集' + gv.project_name + '上F1表现箱形图', fontproperties=myfont)
+    plt.title(u'不同算法在数据集TTT上F1表现箱形图', fontproperties=myfont)
+
     plt.xlabel(u'算法', fontproperties=myfont)
     plt.ylabel(u'F1')
 
     fig.add_subplot(2, 1, 2)
     cmd2 = pd.DataFrame(f1_data)
     cmd2.boxplot()
-    plt.title(u'不同算法在数据集' + gv.project_name + '上auc表现箱形图', fontproperties=myfont)
+    # plt.title(u'不同算法在数据集' + gv.project_name + '上auc表现箱形图', fontproperties=myfont)
+    plt.title(u'不同算法在数据集TTT上auc表现箱形图', fontproperties=myfont)
+
     # plt.yaxis.grid(True)
     plt.xlabel(u'算法', fontproperties=myfont)
     plt.ylabel(u'auc')
@@ -52,5 +56,5 @@ def DrwBox():
 if __name__ == '__main__':
 
     DrwBox()
-    DrwZhexian()
+    # DrwZhexian()
 

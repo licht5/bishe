@@ -35,7 +35,6 @@ def SetDataUnbalanced(filename,test_rate,rate_x,rate_y,att_type,att_add):
     else:
         print("error：没有输入合适的属性type！")
         return
-
     data_len=len(targets)
     test_num=int(test_rate*data_len)
     train_num=data_len-test_num
@@ -45,7 +44,7 @@ def SetDataUnbalanced(filename,test_rate,rate_x,rate_y,att_type,att_add):
     negtive_num=train_num-positive_num
 
     flag_positive=0
-    flag_negtive = 0
+    flag_negtive =0
     train_data=[]
     test_data=[]
     # random_num=random.randint(0,data_len-1)
@@ -67,25 +66,6 @@ def SetDataUnbalanced(filename,test_rate,rate_x,rate_y,att_type,att_add):
         else:
             # break
             test_data.append(data_tem)
-
-
-
-
-
-    #
-    # for data_ in data:
-    #     if att_add=="a":
-    #         att=data_[-1]
-    #     else:
-    #         att=data_[0]
-    #     if att==positive and flag_positive<positive_num:
-    #         train_data.append(data_)
-    #         flag_positive=flag_positive+1
-    #     elif att!=positive and flag_negtive<negtive_num:
-    #         train_data.append(data_)
-    #         flag_negtive=flag_negtive+1
-    #     else:
-    #         test_data.append(data_)
     if att_type=="num":
         np.savetxt("../dataFile/train.csv", train_data, delimiter=',')
         np.savetxt("../dataFile/test.csv", test_data, delimiter=',')
@@ -98,13 +78,6 @@ def SetDataUnbalanced(filename,test_rate,rate_x,rate_y,att_type,att_add):
             writer = csv.writer(f)
             for row in test_data:
                 writer.writerow(row)
-
-    # print(test_data)
-
-
-
-
-
 
 if __name__ == '__main__':
     rate_x, rate_y=1,1

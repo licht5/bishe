@@ -11,10 +11,10 @@ stop_Flag=False
 
 test_rate = 0.4
 project=["mushroom","breast_mass","Ionosphere","hepatitis_after","liver-disorders","tictac"]
-project_name="mushroom"
+project_name="breast_mass"
 att_type="num"
 att=["b","a","a","b","a","a"]
-att_add="b"
+att_add="a"
 filename="../dataFile/raw/"+project_name+".csv"
 savename="../dataFile/ceshi.csv"
 train_filename = "../dataFile/train.csv"
